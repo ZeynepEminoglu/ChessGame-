@@ -80,12 +80,24 @@ piece_list = ['pawn', 'queen' , 'king','knight','rook','bishop']
 
 # insert a check variable and flashing counter here 
 
+
+
+# DRAWING MY CHESS BOARD
+def draw_board():
+    for i in range(32):
+        column = i % 4
+        row = i // 4
+        if row % 2 == 0:
+            pygame.draw.rect(screen, 'light gray',[600 -(column * 200), row * 100, 100,100])
+        else:
+            pygame.draw.rect(screen, 'light gray',[700 -(column * 200), row * 100, 100,100])
+
 # THE MAIN GAME LOOP
 run = True
 while run:
     timer.tick(fps)
     screen.fill('dark gray')
-
+    draw_board()
 # Event Handling 
     for event  in pygame.event.get():
         if event.type == pygame.QUIT:
