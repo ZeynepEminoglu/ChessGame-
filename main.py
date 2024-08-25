@@ -126,8 +126,12 @@ def draw_pieces():
             if selection == i:
                 pygame.draw.rect(screen, 'blue',[black_locations[i][0] * 100 + 1, black_locations[i][1] * 100 + 1,100,100],2)
 
+# CREATING a function here that checks all the valid options for a piece on the board
+def check_options():
+    pass
 
 # THE MAIN GAME LOOP
+
 run = True
 while run:
     timer.tick(fps)
@@ -136,8 +140,54 @@ while run:
     draw_pieces()
 # Event Handling 
     for event  in pygame.event.get():
+        # event where pygame crashes and quits 
         if event.type == pygame.QUIT:
             run = False
+        # event where user succefully clicks on the screen aswell as fetching the coordinates of where the user clicks on the screen
+        if event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:
+            x_coord = event.pos[0] // 100
+            y_coord = event.pos[1] // 100
+            click_coords = (x_coord,y_coord)
+            
+            # CODE for if its WHITES turn 
+            if turn_step <= 1:
+                if click_coords in white_locations:
+                    selection = white_locations.index(click_coords)
+                    if turn_step == 0:
+                        turn_step = 1
+                if click_coords in valid_moves  and selection !=100:
+                    white_locations[selection] = click_coords
+                    if click_coords in black_locations:
+                        black_piece = black_locations.index(click_coords)
+                        captured_pieces_white.append(black_pieces[black_piece])
+                        # REMOVES THE BLACK PICEA FROM THE BOARD WHEN A WHITE PICEA LANDS ON IT I.E removes it from the black piceas list if its been captured
+                        black_pieces.pop(black_piece) 
+                        black_locations.pop(black_piece)
+                    black_options = check_options(black_pieces,black_locations, 'black')
+                    white_options = check_options(white_pieces, white_locations, 'white')
+                    turn_step = 2
+                    selection = 100 
+                    valid_moves = []# clears out the valid moves list everytime its a new turn
+
+                    # CODE for if its BLACKS turn 
+            if turn_step > 1:
+                if click_coords in black_locations:
+                    selection = black_locations.index(click_coords)
+                    if turn_step == 2:
+                        turn_step = 3
+                if click_coords in valid_moves  and selection !=100:
+                    black_locations[selection] = click_coords
+                    if click_coords in white_locations:
+                        white_piece = white_locations.index(click_coords)
+                        captured_pieces_black.append(white_pieces[white_piece])
+                        white_pieces.pop(white_piece) 
+                        white_locations.pop(white_piece)
+                    black_options = check_options(black_pieces,black_locations, 'black')
+                    white_options = check_options(white_pieces, white_locations, 'white')
+                    turn_step = 0 # goes back to whites turn after black has moved its piece
+                    selection = 100 
+                    valid_moves = []
+
 
     pygame.display.flip()
 pygame.quit()
