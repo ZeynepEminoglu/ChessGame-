@@ -196,6 +196,7 @@ def draw_valid(moves):
     for i in range(len(moves)):
         pygame.draw.circle(screen,color,(moves[i][0] * 100 + 50, moves[i][1] * 100 + 50),5 )
 
+# uu
 
 
 
