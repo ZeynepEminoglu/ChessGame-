@@ -130,7 +130,7 @@ def draw_pieces():
 def check_options(pieces,locations,turn):
     moves_list = []
     all_moves_list = []
-    for i in range((pieces)):
+    for i in range((len(pieces))):
         location = locations[i]
         piece = pieces[i]
         if piece == 'pawn':
@@ -168,7 +168,7 @@ def check_pawn(position, color):
             moves_list.append((position[0], position[1] - 1))
         if (position[0], position[1] - 2) not in white_locations and \
                 (position[0], position[1] - 2) not in black_locations and position[1] == 6:
-            moves_list.append((position[0], position[1] + 2))
+            moves_list.append((position[0], position[1] - 2))
         if (position[0] + 1, position[1] - 1) in white_locations:
             moves_list.append((position[0] + 1, position[1] - 1))
         if (position[0] - 1, position[1] - 1) in white_locations:
@@ -176,7 +176,25 @@ def check_pawn(position, color):
     return moves_list
 
 
+# Function for checking the valid moves the selected picea can make 
+def check_valid_moves():
+    if turn_step < 2:
+        options_list = white_options
+    else:
+        options_list = black_options
+    valid_options = options_list[selection]
+    return valid_options
 
+
+
+# Function for drawing valid moves on screen
+def draw_valid(moves):
+    if turn_step < 2:
+        color = 'red'
+    else:
+        color = 'blue'
+    for i in range(len(moves)):
+        pygame.draw.circle(screen,color,(moves[i][0] * 100 + 50, moves[i][1] * 100 + 50),5 )
 
 
 
@@ -191,6 +209,10 @@ while run:
     screen.fill('dark gray')
     draw_board()
     draw_pieces()
+    if selection != 100:
+        valid_moves = check_valid_moves()
+        draw_valid(valid_moves)
+
 # Event Handling 
     for event  in pygame.event.get():
         # event where pygame crashes and quits 
