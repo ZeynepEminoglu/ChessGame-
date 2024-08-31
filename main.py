@@ -141,10 +141,10 @@ def check_options(pieces,locations,turn):
             moves_list = check_knight(location,turn)
         elif piece == 'bishop':
             moves_list = check_bishop(location,turn)
-        #elif piece == 'queen':
-            #moves_list = check_queen(location,turn)
-       #elif piece == 'king':
-        #    moves_list = check_king(location,turn)
+        elif piece == 'queen':
+            moves_list = check_queen(location,turn)
+        elif piece == 'king':
+            moves_list = check_king(location,turn)
         all_moves_list.append(moves_list)
     return all_moves_list
 
@@ -263,7 +263,30 @@ def check_bishop(position,color):
 
     return moves_list
 
+# Function for checking valid Queen moves
+def check_queen(position,color):
+    moves_list = check_bishop(position, color)
+    second_list = check_rook(position,color)
+    for i in range(len(second_list)):
+        moves_list.append(second_list[i])
+    return moves_list
 
+# Function for checking valid King Moves
+def check_king(position,color):
+    moves_list = []
+    if color == 'white':
+        enemies_list = black_locations
+        friends_list = white_locations
+    else:
+        friends_list = black_locations
+        enemies_list = white_locations
+    targets = [(1,0),(1,1),(1,-1),(-1,0),(-1,1),(-1,-1),(0,1),(0,-1)]
+    for i in range(8):
+        target = (position[0] + targets[i][0],position[1] + targets[i][1])
+        if target not in friends_list and 0 <= target[0] <= 7 and 0 <= target[1] <= 7 :
+            moves_list.append(target)
+    return moves_list
+    
 # Function for checking the valid moves the selected picea can make 
 def check_valid_moves():
     if turn_step < 2:
