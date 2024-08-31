@@ -139,8 +139,8 @@ def check_options(pieces,locations,turn):
             moves_list = check_rook(location,turn)
         elif piece == 'knight':
             moves_list = check_knight(location,turn)
-        #elif piece == 'bishop':
-           # moves_list = check_bishop(location,turn)
+        elif piece == 'bishop':
+            moves_list = check_bishop(location,turn)
         #elif piece == 'queen':
             #moves_list = check_queen(location,turn)
        #elif piece == 'king':
@@ -210,7 +210,7 @@ def check_rook(position, color):
                 path = False
     return moves_list
 
-# Function for checkin valid knight moves 
+# Function for checking valid knight moves 
 def check_knight(position,color):
     moves_list = []
     if color == 'white':
@@ -227,7 +227,41 @@ def check_knight(position,color):
             moves_list.append(target)
     return moves_list
 
+# Function for checking valid bishop moves 
+def check_bishop(position,color):
+    moves_list = []
+    if color == 'white':
+        enemies_list = black_locations
+        friends_list = white_locations
+    else:
+        friends_list = black_locations
+        enemies_list = white_locations
+    for i in range(4):  # up-right, up -left , down-right, down-left
+        path = True
+        chain = 1
+        if i == 0:
+            x = 1
+            y = -1
+        elif i == 1:
+            x = -1
+            y = -1
+        elif i == 2:
+            x = 1
+            y = 1
+        else:
+            x = -1
+            y = 1
+        while path:
+            if (position[0] + (chain * x), position[1] + (chain * y)) not in friends_list and \
+                    0 <= position[0] + (chain * x) <= 7 and 0 <= position[1] + (chain * y) <= 7:
+                moves_list.append((position[0] + (chain * x), position[1] + (chain * y)))
+                if (position[0] + (chain * x), position[1] + (chain * y)) in enemies_list:
+                    path = False
+                chain += 1
+            else:
+                path = False
 
+    return moves_list
 
 
 # Function for checking the valid moves the selected picea can make 
@@ -249,10 +283,6 @@ def draw_valid(moves):
         color = 'blue'
     for i in range(len(moves)):
         pygame.draw.circle(screen,color,(moves[i][0] * 100 + 50, moves[i][1] * 100 + 50),5 )
-
-# uu
-
-
 
 
 # THE MAIN GAME LOOP
