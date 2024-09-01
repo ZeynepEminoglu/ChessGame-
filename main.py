@@ -296,6 +296,17 @@ def check_valid_moves():
     valid_options = options_list[selection]
     return valid_options
 
+# Function for drawing captured piceas on the side of the board
+def draw_captured():
+    for i in range (len(captured_pieces_white)):
+        captured_piece = captured_pieces_white[i]
+        index = piece_list.index(captured_piece)
+        screen.blit(small_black_images[index],(825,5 + 50*i))
+    for i in range (len(captured_pieces_black)):
+        captured_piece = captured_pieces_black[i]
+        index = piece_list.index(captured_piece)
+        screen.blit(small_white_images[index],(925,5 + 50*i))
+    
 
 
 # Function for drawing valid moves on screen
@@ -317,6 +328,7 @@ while run:
     screen.fill('dark gray')
     draw_board()
     draw_pieces()
+    draw_captured()
     if selection != 100:
         valid_moves = check_valid_moves()
         draw_valid(valid_moves)
