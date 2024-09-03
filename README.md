@@ -5,7 +5,9 @@ My challenge involves developing a two-player chess game using Python's Pygame l
 
 # Running Game
 To install pygame, use pip
+    
     1)  pip install pygame
+    
     2)  Once Pygame is installed run code on code editor and begin play with whites turn.
 
 # Game Rules
@@ -23,9 +25,13 @@ Approach to Quality: I will ensure quality by adhering to best coding practices 
 
 # Epics => 
 Chessboard Creation: Set up the graphical user interface using Pygame and drawing the chessboard.
+
 Piece Initialization: Loading chess piece images from my assets folder and positioning them correctly on the board.
+
 Player Interaction: Implement player turn handling and input processing for selecting and moving pieces.
+
 Game Logic: Develop functions to check valid moves, detect check/checkmate, and handle piece capturing.
+
 Endgame Handling: Implement victory conditions and game reset functionality.
 
 # Object-Oriented Design and Breakdown
