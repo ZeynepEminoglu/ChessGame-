@@ -44,19 +44,25 @@ Piece Class: Implements the behavior of each type of chess piece, such as moveme
 Utility Classes: Provide helper functions for tasks such as checking valid moves and detecting check/checkmate conditions.
 
 # Release 1 
-Task: Set up the basic chessboard using Pygame and load piece assets onto the board. 
+Set up the basic chessboard using Pygame and load piece assets onto the board. 
+
 Code Review: Initial code successfully draws the chessboard and pieces, and the GUI elements are responsive to user actions.
+
 Changes: Added comments to improve code clarity and modularized the functions for drawing the board and pieces.
 
 
 # Release 2
-Task: Implement piece selection and valid move calculations for each piece.
+Implement piece selection and valid move calculations for each piece.
+
 Code Review: Piece selection is functional, and valid moves are accurately calculated. Turn-based logic has been implemented.
+
 Changes: Refined the logic for handling special moves like pawn promotion and castling.
 
 # Release 3
-Task: Ensure proper handling of check and checkmate scenarios aswell as a gameover screen and a forfeit button.
+Ensure proper handling of check and checkmate scenarios aswell as a gameover screen and a forfeit button.
+
 Code Review: The game correctly detects check/checkmate and highlights the king when in check the forfeit button displays a winner message and allows the player to 
+
 Changes: Improved efficiency in move validation and check detection by streamlining condition checks.
 
 # Reflection on Key Design Challenges
