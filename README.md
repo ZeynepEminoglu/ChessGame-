@@ -97,7 +97,9 @@ Example: The Game class is responsible for handling high-level game logic such a
 
 # Feature Showcase and Innovations
 Displaying Captured Pieces : Pieces that are captured are displayed on the side of the screen in a mini form,allowing players to keep track of the captured pieces.
+
 Flashing King Square : A flashing square is applied to the king square when its placed in check to indicate to the user that their king is in danger.
+
 Forfeit Functionality : A Forfeit button is on the lower right corner of the screen allowing for players to forfeit the game and restart. 
 
 # Refelective Review & Future Improvements
