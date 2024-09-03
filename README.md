@@ -42,7 +42,7 @@ Board Class: Manages the chessboard's drawing and piece placement.
 Piece Class: Implements the behavior of each type of chess piece, such as movement and capturing.
 
 Utility Classes: Provide helper functions for tasks such as checking valid moves and detecting check/checkmate conditions.
-
+# Developement
 # Release 1 
 Set up the basic chessboard using Pygame and load piece assets onto the board. 
 
