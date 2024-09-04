@@ -63,7 +63,7 @@ Changes: Refined the logic for handling special moves like pawn promotion and ca
 Task: Ensure proper handling of check and checkmate scenarios aswell as a gameover screen and a forfeit button.Add in a flashing square around the king when in check 
 
 
-Code Review: The game correctly detects check/checkmate and highlights the king when in check the forfeit button displays a winner message and allows the player to 
+Code Review: The game correctly detects check/checkmate and highlights the king when in check the forfeit button displays a winner message and allows the player to restart the game
 
 Changes: Improved efficiency in move validation and check detection by streamlining condition checks.
 
